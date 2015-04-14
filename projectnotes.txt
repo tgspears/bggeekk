@@ -1,0 +1,52 @@
+TABLES
+	__________________________
+	users
+	--------------------------
+	id (PK)
+	username
+	email
+	hashedpassword
+
+	__________________________
+	boardgames
+	--------------------------
+	id (PK)
+	name
+	^^^	<name>!!!</name> ^^^
+	boardgameid
+	^^^ <boardgame>!!!</boardgame> ^^^
+	yearpublished
+	^^^ <yearpublished>!!!</yearpublished> ^^^
+	minplayers
+	^^^	<minplayers>!!!</minplayers> ^^^
+	maxplayers
+	^^^	<maxplayers>!!!</maxplayers> ^^^
+	playingtime
+	^^^	playingtime ^^^
+	description
+	^^^	^^^
+	thumbnail
+	^^^	^^^
+	image
+	^^^	^^^
+	boardgamecategory
+	^^^	^^^
+	boardgamemechanic
+	^^^ ^^^
+	boardgamepublisher
+	^^^	^^^
+
+	__________________________
+	comments
+	--------------------------
+	commentbody
+	boardgameId
+	userId
+
+
+JOINS
+	__________________________
+	boardgamesusers
+	--------------------------
+	commentId
+	userId

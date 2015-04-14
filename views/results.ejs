@@ -1,0 +1,16 @@
+<% include partials/header %>
+
+<h1>Results</h1>
+<form>
+	<ul>
+		<% for(var i=0;i<boardgame.length;i++){ %>
+			<% if(boardgame[i].name[0]._){ %>
+				<li><%= boardgame[i].name[0]._ %>
+				<a href="/results/<%= boardgame[i].$.objectid %>"><button class="btn btn-primary resultBtn" >Check it out!</button></a>
+			</li>
+			<% } %>
+		<% } %>
+	</ul>
+</form>
+
+<% include partials/footer %>

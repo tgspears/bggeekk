@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "tgspears",
+    "password": "wasd",
+    "database": "bggeekk",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "tgspears",
+    "password": "wasd",
+    "database": "bggeekk_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "tgspears",
+    "password": "wasd",
+    "database": "bggeekk_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}

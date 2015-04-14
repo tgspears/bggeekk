@@ -1,0 +1,22 @@
+{
+  "name": "bggeekk",
+  "version": "1.0.0",
+  "description": "Trevor Spears WDI Project 1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tgspears/bggeekk.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tgspears/bggeekk/issues"
+  },
+  "homepage": "https://github.com/tgspears/bggeekk",
+  "dependencies": {
+    "xml": "^1.0.0"
+  }
+}

@@ -4,31 +4,24 @@ var bcrypt = require('bcrypt');
 
 module.exports = function(sequelize, DataTypes) {
   var user = sequelize.define("user", {
-    userName: DataTypes.STRING,
-    userEmail: DataTypes.STRING,
-    hasedPassword: {
-      type: DataTypes.STRING,
-      validate: {
-        len: {
-          args: [8,200],
-          msg: 'Minimum password length is 8'
-        }
-      }
-      },
-    }, {
-      hooks: {
-        beforeCreate: function(user, options, sendback){
-          bcrypt.hash(user.password,10,function(err,hash){
-            if(err) throw err;
-
-            user.hashedPassword = hash;
+    name: DataTypes.TEXT,
+    email: DataTypes.TEXT,
+    hashPass: DataTypes.TEXT
+  }, {
+    hooks: {
+      beforeCreate: function(user,options,sendback){
+        bcrypt.hash(user.hashPass,10,function(err,hash){
+          if(err) throw err;
+            user.hashPass=hash;
             sendback(null,user);
-          });
-        }
-      },
-      classMethods: {
-        associate: function(models) {
+        });
+      }
+    },
+    classMethods: {
+      associate: function(models) {
         // associations can be defined here
+        models.user.hasMany(models.comment);
+        models.user.hasMany(models.listgame);
       }
     }
   });

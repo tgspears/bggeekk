@@ -8,14 +8,14 @@ module.exports = {
         primaryKey: true,
         type: DataTypes.INTEGER
       },
-      commentBody: {
-        type: DataTypes.STRING
-      },
       userId: {
         type: DataTypes.INTEGER
       },
-      boardgameId: {
+      gameId: {
         type: DataTypes.INTEGER
+      },
+      comment: {
+        type: DataTypes.TEXT
       },
       createdAt: {
         allowNull: false,

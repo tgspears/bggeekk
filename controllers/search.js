@@ -9,9 +9,10 @@ var cheerio = require('cheerio');
 var parseString = require('xml2js').parseString;
 router.use(bodyParser.urlencoded({extended:false}));
 
-
 router.get("/", function(req,res){
-	res.render("index");
+	var user = req.getUser();
+	var alerts = req.flash();
+	res.render("index",{user:user,alerts:alerts});
 })
 
 router.get('/search',function(req,res){
@@ -21,7 +22,7 @@ router.get('/search',function(req,res){
 	var gameData = request(url, function(error, response, data){
 		if (!error && response.statusCode == 200){
 			parseString(data, function (err, result) {
-				res.render('results',result.boardgames);
+				res.render('results',result);
 			})
 		}
 	})

@@ -3,6 +3,17 @@
 
 
 <h1>Lists</h1>
+<% for (var i=0; i<userEntries.length;i++){ %>
+	<ul>
+		<li><%= userEntries[i].id %></li>
+		<li><%= userEntries[i].userId %></li>
+		<li><%= userEntries[i].gameId %></li>
+		<li><%= userEntries[i].tryIt %></li>
+		<li><%= userEntries[i].love %></li>
+		<li><%= userEntries[i].own %></li>
+		<li><%= userEntries[i].suggested %></li>
+	</ul>
+<% } %>
 
 
 

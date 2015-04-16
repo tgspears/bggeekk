@@ -1,0 +1,121 @@
+/*Mint Green*/
+/*87AF8B*/
+/*rgb(135,175,139)*/
+
+/*Blueish Green*/
+/*4A9586*/
+/*rgb(74,149,134)*/
+
+/*Brownish Tanish*/
+/*95725A*/
+/*rgb(149,114,90)*/
+
+
+
+
+--------------------------------------------
+/*HEADER*/
+--------------------------------------------
+#logoutBtn {
+
+}
+#loginBtn {
+
+}
+.logBtns {
+
+}
+#logList {
+
+}
+#listsBtn {
+
+}
+#homeBtn {
+
+}
+#headerTitle {
+	text-align: center;
+}
+
+
+--------------------------------------------
+/*INDEX*/
+--------------------------------------------
+#searchForm {
+	background-color: rgba(255,0,0,.5);
+}
+
+#searchDiv {
+	background-color: rgba(0,255,0,.5);
+	text-align: center;
+}
+
+#searchField {
+	padding: 25px;
+	text-align: center;
+	font-size: 25px;
+	position: fixed;
+	top: 200px;
+	left: 80px;
+	width: 28%;
+	background-color: rgba(149,114,90,.75);
+	color: black;
+}
+
+#searchButton {
+	float:left;
+	left: 37.5%;
+	font-size: 25px;
+	width: 8%;
+	position: fixed;
+	top: 255px;
+	left: 213px;
+	background-color: rgba(135,175,139,.5);
+}
+#spacer {
+	width:25%;
+}
+
+#searchContainer {
+	background-image: url("http://www.thecinemasource.com/blog/wp-content/uploads/wil_wheaton-tabletop_season_3-hp.jpg");
+	background-size: 100%;
+	background-position: 25%;
+	height: 500px;
+}
+
+#spacerRow {
+	height: 175px;
+}
+
+
+-----------------------------------------------------------------------
+/*RESULTS*/
+-----------------------------------------------------------------------
+
+.boardgameNameResult {
+	float: left;
+}
+
+.boardgameYearResult {
+	float: left;	
+}
+
+.boardgameIdResult {
+	float: left;
+}
+
+#resultsHeader {
+	text-align: center;
+	font-size: 35px;
+	border: 1px solid black;
+	border-radius: 10px;
+	background-color: 
+}
+
+#resultBtn {
+	
+}
+
+.resultsDiv {
+}

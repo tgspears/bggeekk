@@ -1,18 +1,21 @@
 "use strict";
 module.exports = {
   up: function(migration, DataTypes, done) {
-    migration.createTable("boardgamesusers", {
+    migration.createTable("games", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: DataTypes.INTEGER
       },
-      userId: {
+      bggid: {
         type: DataTypes.INTEGER
       },
-      boardgameId: {
-        type: DataTypes.INTEGER
+      gameName: {
+        type: DataTypes.TEXT
+      },
+      thumbUrl: {
+        type: DataTypes.TEXT
       },
       createdAt: {
         allowNull: false,
@@ -25,6 +28,6 @@ module.exports = {
     }).done(done);
   },
   down: function(migration, DataTypes, done) {
-    migration.dropTable("boardgamesusers").done(done);
+    migration.dropTable("games").done(done);
   }
 };

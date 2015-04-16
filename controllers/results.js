@@ -6,6 +6,8 @@ var request = require('request');
 var db = require('../models');
 var request = require('request');
 var cheerio = require('cheerio');
+var parseString = require('xml2js').parseString;
+router.use(bodyParser.urlencoded({extended:false}));
 
 
 router.get('/:gameId',function(req,res){
@@ -13,7 +15,11 @@ router.get('/:gameId',function(req,res){
 	var url = "http://boardgamegeek.com/xmlapi/boardgame/"+gameId;
 	var gameData = request(url,function(error,response,data){
 		if (!error && response.statusCode == 200){
-			res.render('gameDeets',data);
+			parseString(data, function (err, result) {
+				if (req.getUser()){
+					res.render('gameDeets',result);
+				}else res.render('auth/login');
+			})
 		}
 	})
 });

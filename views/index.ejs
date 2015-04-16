@@ -1,13 +1,19 @@
 <% include partials/header %>
 
-
-<div class="jumbotron">
-	<form id="searchForm" method="get" action="/search" role="search">
-		<div class="form-group">
-			<input id="searchField" type="text" class="form-control" placeholder="Find awesome boardgames!" name="q">
+<div id="searchContainer" class="container">
+	<div class="row" id="spacerRow"></div>
+	<div id="searchRow" class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+			<form id="searchForm" method="get" action="/search" role="search">
+				<div id="searchDiv" class="form-group">
+					<input id="searchField" type="text"  maxlength="26" class="form-control" placeholder="Find awesome boardgames!" name="q">
+					<span id="searchButton" type="submit" class="btn btn-default glyphicon glyphicon-search">
+				</div>
+			</form>
 		</div>
-		<input id="searchButton" type="submit" value="Search" class="btn btn-default">
-	</form>
+	</div>
+	<div class="col-md-3"></div>
 </div>
 
 

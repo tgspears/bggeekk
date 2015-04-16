@@ -50,3 +50,51 @@ JOINS
 	--------------------------
 	commentId
 	userId
+
+
+	var gameId = req.params.id;
+var user = req.getUser();
+
+db.usergame.find({
+  where:{
+    bggId:gameId,
+    userId:user.id
+  }).then(function(game){
+    if(game){
+      //found a game
+      game.love=false;
+      game.own=false;
+      game.want=true;
+      game.save().then(function(){
+        //res.send or render
+      })
+    }else{
+      //didn't find a game
+      request('...',function(data){
+        db.usergame.create({
+          userId:user.id,
+          bggId:gameId,
+          name:data.whatever.name,
+          pic:data.whatever.picture,
+          want:true,
+          love:false,
+          own:false
+        }).then(function(){
+          // res.redirect(...)
+          // or
+          // res.send(...)
+        })
+      });
+    }
+  });
+
+
+  			<form class="form favsform" action="/favorites" method="post">
+				<input id="title" type="hidden" name="Title" value="<%= Title %>">
+				<input id="year" type="hidden" name="Year" value="<%= Year %>">
+				<input id="imdbid" type="hidden" name="imdbID" value="<%= imdbID %>">
+				<input id="poster" type="hidden" name="Poster" value="<%= Poster %>">
+				<!-- Button -->
+				<input type="submit" value="FAVORITE THIS" id="favoriteButton" class="itsAButton">
+				<input action='/favorites' type="submit" value="GO TO FAVORITES" id="favoriteButton" class="itsAButton">
+			</form>

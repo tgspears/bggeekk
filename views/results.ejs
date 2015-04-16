@@ -1,16 +1,20 @@
 <% include partials/header %>
 
-<h1>Results</h1>
-<form>
+<div id="resultsContainer" class="container">
+<h1 id="resultsHeader">Are these the awesome boardgames you've been looking for?</h1>
 	<ul>
-		<% for(var i=0;i<boardgame.length;i++){ %>
-			<% if(boardgame[i].name[0]._){ %>
-				<li><%= boardgame[i].name[0]._ %>
-				<a href="/results/<%= boardgame[i].$.objectid %>"><button class="btn btn-primary resultBtn" >Check it out!</button></a>
-			</li>
+		<% for(var i=0;i<boardgames.boardgame.length;i++){ %>
+			<% if(boardgames.boardgame[i].name[0]._){ %>
+			<div class="">
+				<div class="resultsDiv">
+					<div class="boardgameNameResult"><%= boardgames.boardgame[i].name[0]._ %></div>
+					<div class="boardgameYearResult"><%= boardgames.boardgame[i].yearpublished %></div>
+					<a href="/results/<%= boardgames.boardgame[i].$.objectid %>" class="btn btn-primary resultBtn" >Check it out!</a>
+				</div>
+			</div>
 			<% } %>
 		<% } %>
 	</ul>
-</form>
+</div>
 
 <% include partials/footer %>

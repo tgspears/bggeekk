@@ -8,14 +8,14 @@ module.exports = {
         primaryKey: true,
         type: DataTypes.INTEGER
       },
-      userName: {
-        type: DataTypes.STRING
+      name: {
+        type: DataTypes.TEXT
       },
-      userEmail: {
-        type: DataTypes.STRING
+      email: {
+        type: DataTypes.TEXT
       },
-      hasedPassword: {
-        type: DataTypes.STRING
+      hashPass: {
+        type: DataTypes.TEXT
       },
       createdAt: {
         allowNull: false,

@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/tgspears/bggeekk",
   "dependencies": {
+    "bcrypt": "^0.8.2",
     "xml": "^1.0.0"
   }
 }

@@ -6,13 +6,15 @@ module.exports = function(sequelize, DataTypes) {
     tryIt: DataTypes.BOOLEAN,
     love: DataTypes.BOOLEAN,
     own: DataTypes.BOOLEAN,
-    suggested: DataTypes.BOOLEAN
+    suggested: DataTypes.BOOLEAN,
+    gameName: DataTypes.STRING,
+    thumbUrl: DataTypes.STRING
   }, {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
         models.listgame.belongsTo(models.user);
-        models.listgame.belongsTo(models.game);
+        // models.listgame.belongsTo(models.game);
       }
     }
   });

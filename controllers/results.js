@@ -16,9 +16,7 @@ router.get('/:gameId',function(req,res){
 	var gameData = request(url,function(error,response,data){
 		if (!error && response.statusCode == 200){
 			parseString(data, function (err, result) {
-				if (req.getUser()){
-					res.render('gameDeets',result);
-				}else res.render('auth/login');
+				res.render('gameDeets',result);
 			})
 		}
 	})

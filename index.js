@@ -25,6 +25,9 @@ app.use(flash());
 
 //custom middleware - is user logged in
 app.use(function(req,res,next){
+	req.session.user = {
+		id: 5
+	}
 	req.getUser = function(){
 		return req.session.user || false;
 	}

@@ -2,18 +2,96 @@
 
 
 
-<h1>Lists</h1>
-<% for (var i=0; i<userEntries.length;i++){ %>
-	<ul>
-		<li><%= userEntries[i].id %></li>
-		<li><%= userEntries[i].userId %></li>
-		<li><%= userEntries[i].gameId %></li>
-		<li><%= userEntries[i].tryIt %></li>
-		<li><%= userEntries[i].love %></li>
-		<li><%= userEntries[i].own %></li>
-		<li><%= userEntries[i].suggested %></li>
-	</ul>
+
+<h1>List Page</h1>
+
+
+
+
+
+<h1>want to try list</h1>
+
+<% for (var i=0; i<listData.length;i++){ %>
+	<% if (listData[i].tryIt) { %>
+		<ul>
+			<li>Game Name: <%= listData[i].gameName %></li>
+			<li>User Id: <%= listData[i].userId %></li>
+			<li>Game Id: <%= listData[i].gameId %></li>
+			<li>In Try It list? <%= listData[i].tryIt %></li>
+			<li>In Love list? <%= listData[i].love %></li>
+			<li>in Own list? <%= listData[i].own %></li>
+			<img src="<%= listData[i].thumbUrl %>">
+
+			<a class="deleteBtn btn" href="/lists/<%= listData[i].id %>"><i class="glyphicon glyphicon-trash"></i></a>
+
+			<form class="form" action="/lists/love/<%= listData[i].id %>" method="post">
+				<input type="submit" value="Move to Love!" id="loveMoveButton" class="itsAButton">
+			</form>
+
+			<form class="form" action="/lists/own/<%= listData[i].id %>" method="post">
+				<input type="submit" value="Move to Own!" id="tryitMoveButton" class="itsAButton">
+			</form>
+
+		</ul>
+	<% } %>
 <% } %>
+
+
+<h1>love list</h1>
+
+<% for (var i=0; i<listData.length;i++){ %>
+	<% if (listData[i].love) { %>
+		<ul>
+			<li>Game Name: <%= listData[i].gameName %></li>
+			<li>User Id: <%= listData[i].userId %></li>
+			<li>Game Id: <%= listData[i].gameId %></li>
+			<li>In Try It list? <%= listData[i].tryIt %></li>
+			<li>In Love list?<%= listData[i].love %></li>
+			<li>in Own list?<%= listData[i].own %></li>
+			<img src="<%= listData[i].thumbUrl %>">
+			
+			<a class="deleteBtn btn" href="/lists/<%= listData[i].id %>"><i class="glyphicon glyphicon-trash"></i></a>
+
+			<form class="form" action="/lists/tryit/<%= listData[i].id %>" method="post">
+				<input type="submit" value="Move to Try It!" id="tryitMoveButton" class="itsAButton">
+			</form>
+
+			<form class="form" action="/lists/own/<%= listData[i].id %>" method="post">
+				<input type="submit" value="Move to Own!" id="ownMoveButton" class="itsAButton">
+			</form>
+
+		</ul>
+	<% } %>
+<% } %>
+
+
+<h1>own list</h1>
+
+<% for (var i=0; i<listData.length;i++){ %>
+	<% if (listData[i].own) { %>
+		<ul>
+			<li>Game Name: <%= listData[i].gameName %></li>
+			<li>User Id: <%= listData[i].userId %></li>
+			<li>Game Id: <%= listData[i].gameId %></li>
+			<li>In Try It list? <%= listData[i].tryIt %></li>
+			<li>In Love list?<%= listData[i].love %></li>
+			<li>in Own list?<%= listData[i].own %></li>
+			<a href="/results/<%= listData[i].gameId %>"><img src="<%= listData[i].thumbUrl %>"></a>
+
+			<a class="deleteBtn btn" href="/lists/<%= listData[i].id %>"><i class="glyphicon glyphicon-trash"></i></a>
+
+			<form class="form" action="/lists/tryit/<%= listData[i].id %>" method="post">
+				<input type="submit" value="Move to Try It!" id="tryitMoveButton" class="itsAButton">
+			</form>
+
+			<form class="form" action="/lists/love/<%= listData[i].id %>" method="post">
+				<input type="submit" value="Move to Love!" id="tryitMoveButton" class="itsAButton">
+			</form>
+
+		</ul>
+	<% } %>
+<% } %>
+
 
 
 

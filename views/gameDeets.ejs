@@ -1,50 +1,30 @@
 <% include partials/header %>
 
-
-<h1>gameDeets</h1>
-<p><%= boardgames.boardgame[0].$.objectid %></p>
-<p><%= boardgames.boardgame[0].yearpublished[0] %></p>
-<p><%= boardgames.boardgame[0].playingtime[0] %></p>
-<img src="<%= boardgames.boardgame[0].thumbnail[0] %>">
-<img src="<%= boardgames.boardgame[0].image[0] %>">
+<p> ( ͡° ͜ʖ ͡°) </p>
+<h1><%= boardgames.boardgame[0].name[0]._ %></h1>
+<p>Approximate play time: <%= boardgames.boardgame[0].playingtime[0] %></p>
+<img class="deetsImg" src="<%= boardgames.boardgame[0].image[0] %>">
 <p><%= boardgames.boardgame[0].description[0].split("<br/>") %></p>
 
-<% if(boardgames.boardgame[0].boardgamecategory){ %>
-	<% for (var i=0;i<boardgames.boardgame[0].boardgamecategory.length;i++){ %>
-		<p>Category:  <%= boardgames.boardgame[0].boardgamecategory[i]._%></p>
-	<% } %>
-<% } %>
-
-<% if(boardgames.boardgame[0].boardgamemechanic){ %>
-	<% for (var i=0;i<boardgames.boardgame[0].boardgamemechanic.length;i++){ %>
-		<p>Mechanic:  <%= boardgames.boardgame[0].boardgamemechanic[i]._%></p>
-	<% } %>
-<% } %>
-
-<% if(boardgames.boardgame[0].boardgamedesigner){ %>
-	<% for (var i=0;i<boardgames.boardgame[0].boardgamedesigner.length;i++){ %>
-		<p>Designer:  <%= boardgames.boardgame[0].boardgamedesigner[i]._%></p>
-	<% } %>
-<% } %>
-
-<% if(boardgames.boardgame[0].boardgameartist) { %>
-	<% for (var i=0;i<boardgames.boardgame[0].boardgameartist.length;i++){ %>
-		<p>Artist:  <%= boardgames.boardgame[0].boardgameartist[i]._%></p>
-	<% } %>
-<% } %>
 <form class="form" action="/lists/tryit" method="post">
-	<input  id="tryitHidId" name="tryitHid" value="<%= boardgames.boardgame[0].$.objectid %>">
-	<input  id="tryitHidThumb" name="tryitHid" value="<%= boardgames.boardgame[0].thumbnail[0] %>">
+	<input type="hidden" id="tryitHidName" name="tryitHidName" value="<%= boardgames.boardgame[0].name[0]._ %>">
+	<input type="hidden" id="tryitHidId" name="tryitHidId" value="<%= boardgames.boardgame[0].$.objectid %>">
+	<input type="hidden" id="tryitHidThumb" name="tryitHidThumb" value="<%= boardgames.boardgame[0].thumbnail[0] %>">
 	<input type="submit" value="Add to Want to Try!" id="tryitButton" class="itsAButton">
 </form>
 <form class="form" action="/lists/love" method="post">
-	<input  id="loveHid" name="loveHid" value="<%= boardgames.boardgame[0].$.objectid %>">
+	<input type="hidden" id="loveHidName" name="loveHidName" value="<%= boardgames.boardgame[0].name[0]._ %>">
+	<input type="hidden" id="loveHidId" name="loveHidId" value="<%= boardgames.boardgame[0].$.objectid %>">
+	<input type="hidden" id="loveHidThumb" name="loveHidThumb" value="<%= boardgames.boardgame[0].thumbnail[0] %>">
 	<input type="submit" value="Add to Love!" id="loveButton" class="itsAButton">
 </form>
 <form class="form" action="/lists/own" method="post">
-	<input  id="ownHid" name="ownHid" value="<%= boardgames.boardgame[0].$.objectid %>">
+	<input type="hidden" id="ownHidName" name="ownHidName" value="<%= boardgames.boardgame[0].name[0]._ %>">
+	<input type="hidden" id="ownHidId" name="ownHidId" value="<%= boardgames.boardgame[0].$.objectid %>">
+	<input type="hidden" id="ownHidThumb" name="ownHidThumb" value="<%= boardgames.boardgame[0].thumbnail[0] %>">
 	<input type="submit" value="Add to Own!" id="ownButton" class="itsAButton">
 </form>
-<!-- 	<a method="post" action="/lists/suggest" id="suggestButton" class=" btn btn-primary itsAButton">Suggest for a friend's &lt;li&gt;!"</a>
- -->
+
+<!-- Suggest for a friend! -->
+
 <% include partials/footer %>

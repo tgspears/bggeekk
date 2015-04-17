@@ -19,7 +19,7 @@ router.get('/search',function(req,res){
 	var searchTerm = req.query.q;
 	var url = "http://boardgamegeek.com/xmlapi/search?search="+searchTerm;
 
-	var gameData = request(url, function(error, response, data){
+	request(url, function(error, response, data){
 		if (!error && response.statusCode == 200){
 			parseString(data, function (err, result) {
 				res.render('results',result);

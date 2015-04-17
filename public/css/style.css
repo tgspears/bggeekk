@@ -12,6 +12,10 @@
 
 
 
+#everything {
+	font-family: 'Roboto', sans-serif;
+}
+
 
 --------------------------------------------
 /*HEADER*/
@@ -38,6 +42,17 @@
 	text-align: center;
 }
 
+.myNav {
+	position:relative;
+	z-index: 99;
+} 
+
+#headerSearch {
+	width: 200px;
+	top:0px;
+	left:250px;
+}
+
 
 --------------------------------------------
 /*INDEX*/
@@ -57,8 +72,8 @@
 	font-size: 25px;
 	position: fixed;
 	top: 200px;
-	left: 80px;
-	width: 28%;
+	left: 150px;
+	width: 25%;
 	background-color: rgba(149,114,90,.75);
 	color: black;
 }
@@ -70,7 +85,7 @@
 	width: 8%;
 	position: fixed;
 	top: 255px;
-	left: 213px;
+	left: 268px;
 	background-color: rgba(135,175,139,.5);
 }
 #spacer {
@@ -79,9 +94,8 @@
 
 #searchContainer {
 	background-image: url("http://www.thecinemasource.com/blog/wp-content/uploads/wil_wheaton-tabletop_season_3-hp.jpg");
-	background-size: 100%;
-	background-position: 25%;
-	height: 500px;
+	background-size: cover;
+	height: 600px;
 }
 
 #spacerRow {
@@ -94,15 +108,10 @@
 -----------------------------------------------------------------------
 
 .boardgameNameResult {
-	float: left;
 }
 
 .boardgameYearResult {
-	float: left;	
-}
-
-.boardgameIdResult {
-	float: left;
+	font-size: 25px;
 }
 
 #resultsHeader {
@@ -110,7 +119,28 @@
 	font-size: 35px;
 	border: 1px solid black;
 	border-radius: 10px;
-	background-color: 
+}
+
+#resultsContainer {
+	width: 100%;
+
+}
+
+#photoContainer {
+	background-image: url('https://i.ytimg.com/vi/kVKQ3VgGN3o/maxresdefault.jpg');
+	background-attachment:fixed;
+	top:0;
+	left:0;
+	height:850px;
+	width:100%;
+	position:fixed;
+	background-size: cover;
+	-webkit-filter: blur(5px);
+	-moz-filter: blur(5px);
+	-o-filter: blur(5px);
+	-ms-filter: blur(5px);
+	filter: blur(5px);
+	z-index: 1;
 }
 
 #resultBtn {
@@ -118,4 +148,94 @@
 }
 
 .resultsDiv {
+	background-color: rgba(255,255,255,.75);
+	color:black;
+	border:1px solid black;
+	border-radius: 5px;
+	margin: auto;
+	width: 50%;
+	margin-bottom: 10px;
+	z-index: 99;
+	position:relative;
+	text-align: center;
+	padding: 5px;
+}
+
+
+-----------------------------------------------------------------------
+/*LISTS*/
+-----------------------------------------------------------------------
+
+.listsUl {
+	text-align: center;
+	color:black;
+}
+
+.listsGameThumb {
+	width: 150px;
+	height: 150px;
+}
+
+.listsGameName {
+	color:black;
+	font-size: 15px;
+}
+
+
+#listsContainer {
+	position:relative;
+	z-index: 99;
+}
+
+#listsBackground {
+	top:0px;
+	height:800px;
+	width:100%;
+	position:fixed;
+	z-index: 0;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-image: url("http://i3.mirror.co.uk/incoming/article355852.ece/ALTERNATES/s615/7266681D-BB0B-32E7-A486F743EF1C6BAF.jpg");
+	-webkit-filter: blur(5px);
+	-moz-filter: blur(5px);
+	-o-filter: blur(5px);
+	-ms-filter: blur(5px);
+	filter: blur(5px);
+	z-index: 1;	
+}
+
+.listDiv {
+	border: 5px solid black;
+	border-radius: 10px;
+	margin: 10px;
+	height: 300px;
+	background-color: rgba(255,255,255,.5);
+	font-family: 'Roboto', sans-serif;
+}
+
+#listJumbo {
+	text-align: center;
+	font-family: 'Roboto', sans-serif;
+}
+
+.listsTryit {
+	
+}
+
+.listsLove {
+	
+}
+
+.listsOwn {
+	
+}
+
+--------------------------------------------
+/*Auth Stuff*/
+--------------------------------------------
+
+#signupDiv {
+	margin: 10px;
+	height: 800px;
+	background:red;
 }

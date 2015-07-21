@@ -1,2 +1,1 @@
-# bggeekk
-Trevor Spears WDI Project 1
+tblTop - a place to explore, discover and (eventually) share awesome boardgames!

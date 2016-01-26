@@ -1,3 +1,11 @@
+var express = require('express');
+var bodyParser = require('body-parser');
+var router = express.Router();
+var db = require('../models');
+
+router.use(bodyParser.urlencoded({extended:false}));
+
+
 router.get('/:gameId',function(req,res){
 	var gameId = req.params.gameId;
 	var url = "http://boardgamegeek.com/xmlapi/boardgame/"+gameId;

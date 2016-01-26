@@ -2,10 +2,7 @@ var bcrypt = require('bcrypt');
 var express = require('express');
 var bodyParser = require('body-parser');
 var router = express.Router();
-var app = express();
-var request = require('request');
 var db = require('../models');
-var request = require('request');
 var session = require('express-session');
 
 router.use(bodyParser.urlencoded({extended:false}));
@@ -19,17 +16,17 @@ router.get('/restricted',function(req,res){
     }
 });
 
-//GET /auth/login
-//display login form
+// GET /auth/login
+// display login form
 router.get('/login',function(req,res){
     res.render('auth/login');
 });
 
-// //POST /login
-// //process login data and login user
+// POST /login
+// process login data and login user
 
 router.post('/login',function(req,res){
-    //do login here (check password and set session value)
+    // do login here (check password and set session value)
     // res.send(req.body);
     db.user.find({where:{email:req.body.email}})
     	.then(function(user){
@@ -54,18 +51,18 @@ router.post('/login',function(req,res){
     			res.send('Unknown user.');
     		}
     	})
-    //user is logged in forward them to the home page
+    // user is logged in forward them to the home page
     // res.redirect('/');
 });
 
-//GET /auth/signup
-//display sign up form
+// GET /auth/signup
+// display sign up form
 router.get('/signup',function(req,res){
     res.render('auth/signup');
 });
 
-//POST /auth/signup
-//create new user in database
+// POST /auth/signup
+// create new user in database
 router.post('/signup',function(req,res){
 
 	var userQuery={email:req.body.email};
@@ -94,8 +91,8 @@ router.post('/signup',function(req,res){
     // user is signed up forward them to the home page
 });
 
-//GET /auth/logout
-//logout logged in user
+// GET /auth/logout
+// logout logged in user
 router.get('/logout',function(req,res){
     delete req.session.user;
     res.redirect('/');

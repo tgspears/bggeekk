@@ -4,9 +4,7 @@ var router = express.Router();
 var app = express();
 var request = require('request');
 var db = require('../models');
-var request = require('request');
 var parseString = require('xml2js').parseString;
-var cheerio = require('cheerio');
 
 router.use(bodyParser.urlencoded({extended:false}));
 
@@ -20,7 +18,6 @@ router.get('/',function(req,res){
             })
         })
         .then(function(listData){
-            // res.send(listData);
             res.render('lists',{listData:listData});
         })
     }else{

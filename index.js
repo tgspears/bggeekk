@@ -23,11 +23,7 @@ app.use(session({
 
 app.use(flash());
 
-//custom middleware - is user logged in
 app.use(function(req,res,next){
-	// req.session.user = {
-	// 	id: 5
-	// }
 	req.getUser = function(){
 		return req.session.user || false;
 	}
@@ -41,4 +37,4 @@ app.use("/auth",authCtrl);
 
 app.use(express.static(__dirname + "/public"));
 
-app.listen(process.env.PORT || 3000)
+app.listen(process.env.PORT || 1337)

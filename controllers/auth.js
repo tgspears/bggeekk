@@ -26,8 +26,9 @@ router.get('/login',function(req,res){
 // process login data and login user
 
 router.post('/login',function(req,res){
+
     // do login here (check password and set session value)
-    // res.send(req.body);
+
     db.user.find({where:{email:req.body.email}})
     	.then(function(user){
     		if(user){
@@ -35,14 +36,15 @@ router.post('/login',function(req,res){
     				if(err) throw err;
 
     				if(result){
+
     					// store uer to session!
     					req.session.user = {
     						id:user.id,
     						email:user.email,
     						name:user.name
     					};
-    					res.redirect('/');
-    					// res.send('GG you can memory');
+    					res.redirect('/lists');
+
     				}else{
     					res.send('Forgot your pass? Try harder, scrub.');
     				}
@@ -51,18 +53,19 @@ router.post('/login',function(req,res){
     			res.send('Unknown user.');
     		}
     	})
-    // user is logged in forward them to the home page
-    // res.redirect('/');
+
 });
 
 // GET /auth/signup
 // display sign up form
+
 router.get('/signup',function(req,res){
     res.render('auth/signup');
 });
 
 // POST /auth/signup
 // create new user in database
+
 router.post('/signup',function(req,res){
 
 	var userQuery={email:req.body.email};
@@ -75,9 +78,19 @@ router.post('/signup',function(req,res){
 
 	db.user.findOrCreate({where:userQuery,defaults:userData})
 		.spread(function(user,created){
-            // res.send(user);
+
 			if(created){
-                res.redirect('/');
+
+                // If user created, log user in
+
+                req.session.user = {
+                    id:user.id,
+                    email:user.email,
+                    name:user.name
+                };
+
+                res.redirect('/lists');
+
             }else{
                 res.send('e-mail already exists.');
             }
@@ -86,17 +99,15 @@ router.post('/signup',function(req,res){
             console.log('sign up findorcreate error',error);
             res.send(error);
         })
-    // do sign up here (add user to database)
-    // res.send(req.body);
-    // user is signed up forward them to the home page
+
 });
 
 // GET /auth/logout
-// logout logged in user
+// logout user
+
 router.get('/logout',function(req,res){
     delete req.session.user;
     res.redirect('/');
 });
-
 
 module.exports = router;

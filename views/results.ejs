@@ -4,15 +4,26 @@
 <div id="photoContainer"></div>
 <h1 id="resultsHeader">Are these the awesome boardgames you've been looking for?</h1>
 	<ul>
-		<% for(var i=0;i<boardgames.boardgame.length;i++){ %>
-			<% if(boardgames.boardgame[i].name[0]._){ %>
-			<div class="resultsDiv">
-					<h1 class="boardgameNameResult"><%= boardgames.boardgame[i].name[0]._ %></h1>
-					<div class="boardgameYearResult"><%= boardgames.boardgame[i].yearpublished %></div>
-					<a href="/results/<%= boardgames.boardgame[i].$.objectid %>" class="btn btn-primary resultBtn" >Check it out!</a>
-			</div>
+
+		<% if(boardgames.boardgame){ %>
+			<% if(boardgames.boardgame.length > 0){ %>
+				<% for(var i=0;i<boardgames.boardgame.length;i++){ %>
+					<% if(boardgames.boardgame[i].name[0]._){ %>
+						<div class="resultsDiv">
+							<h1 class="boardgameNameResult"><%= boardgames.boardgame[i].name[0]._ %></h1>
+							<div class="boardgameYearResult"><%= boardgames.boardgame[i].yearpublished %></div>
+							<a href="/results/<%= boardgames.boardgame[i].$.objectid %>" class="btn btn-primary resultBtn" >Check it out!</a>
+						</div>
+					<% } %>
+				<% } %>
 			<% } %>
 		<% } %>
+		<% if(1 === 1) { %>
+
+			<h1>No results</h1>
+
+		<% } %>
+
 	</ul>
 </div>
 

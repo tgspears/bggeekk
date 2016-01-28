@@ -14,6 +14,8 @@ router.get('/:gameId',function(req,res){
 			parseString(data, function (err, result) {
 				res.render('gameDeets',result);
 			})
+		} else {
+			res.render('wasd');
 		}
 	})
 });

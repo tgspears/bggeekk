@@ -16,16 +16,20 @@ router.get("/", function(req,res){
 })
 
 router.get('/search',function(req,res){
-	var searchTerm = req.query.q;
-	var url = "http://boardgamegeek.com/xmlapi/search?search="+searchTerm;
+	if(req.query.q.length > 2){
+		var searchTerm = req.query.q;
 
-	request(url, function(error, response, data){
-		if (!error && response.statusCode == 200){
-			parseString(data, function (err, result) {
-				res.render('results',result);
-			})
-		}
-	})
+		var url = "http://boardgamegeek.com/xmlapi/search?search="+searchTerm;
+
+		request(url, function(error, response, data){
+			if (!error && response.statusCode == 200){
+				parseString(data, function (err, result) {
+					res.render('results',result);
+				})
+			}
+		})
+
+	} else { res.send('needs more'); }
 })
 
 module.exports = router;

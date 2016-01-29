@@ -2,6 +2,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var router = express.Router();
 var db = require('../models');
+var request = require('request');
+var parseString = require('xml2js').parseString;
 
 router.use(bodyParser.urlencoded({extended:false}));
 
@@ -19,7 +21,5 @@ router.get('/:gameId',function(req,res){
 		}
 	})
 });
-
-router.use(bodyParser.urlencoded({extended:false}));
 
 module.exports = router;

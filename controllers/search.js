@@ -5,14 +5,14 @@ var app = express();
 var request = require('request');
 var db = require('../models');
 var request = require('request');
-var cheerio = require('cheerio');
 var parseString = require('xml2js').parseString;
+
 router.use(bodyParser.urlencoded({extended:false}));
 
 router.get("/", function(req,res){
 	var user = req.getUser();
-	var alerts = req.flash();
-	res.render("index",{user:user,alerts:alerts});
+	req.flash('info', 'Flash is back!')
+	res.render("index", { user: user, message: req.flash('info') });
 })
 
 router.get('/search',function(req,res){
@@ -29,7 +29,7 @@ router.get('/search',function(req,res){
 			}
 		})
 
-	} else { res.send('needs more'); }
+	} else { res.alert('needs more'); }
 })
 
 module.exports = router;

@@ -6,7 +6,6 @@ var app = express();
 var bcrypt = require('bcrypt');
 var db = require('./models');
 var request = require('request');
-var cheerio = require('cheerio');
 var parseString = require('xml2js').parseString;
 var searchCtrl = require("./controllers/search");
 var resultsCtrl = require('./controllers/results');

@@ -10,7 +10,7 @@ router.use(bodyParser.urlencoded({extended:false}));
 router.get('/restricted',function(req,res){
     if(req.getUser()){
         res.render('auth/restricted');
-    }else{
+    } else {
         req.flash('danger','You are not cool enough');
         res.redirect('/');
     }
@@ -18,6 +18,7 @@ router.get('/restricted',function(req,res){
 
 // GET /auth/login
 // display login form
+
 router.get('/login',function(req,res){
     res.render('auth/login');
 });
@@ -27,8 +28,6 @@ router.get('/login',function(req,res){
 
 router.post('/login',function(req,res){
 
-    // do login here (check password and set session value)
-
     db.user.find({where:{email:req.body.email}})
     	.then(function(user){
     		if(user){
@@ -37,7 +36,6 @@ router.post('/login',function(req,res){
 
     				if(result){
 
-    					// store uer to session!
     					req.session.user = {
     						id:user.id,
     						email:user.email,
@@ -80,8 +78,6 @@ router.post('/signup',function(req,res){
 		.spread(function(user,created){
 
 			if(created){
-
-                // If user created, log user in
 
                 req.session.user = {
                     id:user.id,

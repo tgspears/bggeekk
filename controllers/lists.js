@@ -11,16 +11,15 @@ router.use(bodyParser.urlencoded({extended:false}));
 router.get('/',function(req,res){
     if(req.getUser()){
         var userId = req.getUser();
-        console.log('user id /lists',userId)
         db.listgame.findAll({
             where:({
                 userId:userId.id
             })
         })
         .then(function(listData){
-            res.render('lists',{listData:listData});
+            res.render('lists',{listData:listData, userId:userId.name});
         })
-    }else{
+    } else {
         res.redirect('auth/login');
     }
 });
@@ -29,9 +28,6 @@ router.post('/tryit',function(req,res){
     if(req.getUser()){
         var gameId = req.body.tryitHidId;
         var user = req.getUser();
-
-        console.log('clicked tryit');
-        console.log(gameId);
 
         db.listgame.findOrCreate({
             where:({
@@ -42,9 +38,7 @@ router.post('/tryit',function(req,res){
         .spread(function(game,created){
             var url = "http://boardgamegeek.com/xmlapi/boardgame/"+gameId;
             request(url,function(error,response,data){
-                console.log('inside request');
                 parseString(data, function (err, result){
-                    // return res.send(result);
                     game.tryIt=true,
                     game.love=false,
                     game.own=false,
@@ -52,10 +46,9 @@ router.post('/tryit',function(req,res){
                     game.gameName = result.boardgames.boardgame[0].name[0]._,
                     game.thumbUrl=result.boardgames.boardgame[0].thumbnail[0],
                     game.save().then(function(userEntries){
-                            console.log('saved data, redirecting')
-                            res.redirect('/lists');
-                        })
+                        res.redirect('/lists');
                     })
+                })
             })
         })
     } else {
@@ -68,9 +61,6 @@ router.post('/love',function(req,res){
         var gameId = req.body.loveHidId;
         var user = req.getUser();
 
-        console.log('clicked love');
-        console.log(gameId);
-
         db.listgame.findOrCreate({
             where:({
                 gameId:gameId,
@@ -80,9 +70,7 @@ router.post('/love',function(req,res){
         .spread(function(game,created){
             var url = "http://boardgamegeek.com/xmlapi/boardgame/"+gameId;
             request(url,function(error,response,data){
-                console.log('inside request');
                 parseString(data, function (err, result){
-                    // return res.send(result);
                     game.tryIt=false,
                     game.love=true,
                     game.own=false,
@@ -90,12 +78,12 @@ router.post('/love',function(req,res){
                     game.gameName = result.boardgames.boardgame[0].name[0]._,
                     game.thumbUrl=result.boardgames.boardgame[0].thumbnail[0],
                     game.save().then(function(gameData){
-                            res.redirect('/lists');
-                        })
+                        res.redirect('/lists');
                     })
+                })
             })
         })
-    }else {
+    } else {
         res.redirect('/auth/login')
     }
 });
@@ -105,9 +93,6 @@ router.post('/own',function(req,res){
         var gameId = req.body.ownHidId;
         var user = req.getUser();
 
-        console.log('clicked love');
-        console.log(gameId);
-
         db.listgame.findOrCreate({
             where:({
                 gameId:gameId,
@@ -117,9 +102,7 @@ router.post('/own',function(req,res){
         .spread(function(game,created){
             var url = "http://boardgamegeek.com/xmlapi/boardgame/"+gameId;
             request(url,function(error,response,data){
-                console.log('inside request');
                 parseString(data, function (err, result){
-                    // return res.send(result);
                     game.tryIt=false,
                     game.love=false,
                     game.own=true,
@@ -127,16 +110,15 @@ router.post('/own',function(req,res){
                     game.gameName = result.boardgames.boardgame[0].name[0]._,
                     game.thumbUrl=result.boardgames.boardgame[0].thumbnail[0],
                     game.save().then(function(gameData){
-                            res.redirect('/lists');
-                        })
+                        res.redirect('/lists');
                     })
+                })
             })
         })
-    }else {
+    } else {
         res.redirect('/auth/login')
     }
 });
-
 
 router.delete('/:id',function(req,res){
     db.listgame.destroy({
@@ -195,47 +177,5 @@ router.post('/own/:id',function(req,res){
         })
     })
 })
-
-
-// router.post('/suggested',function(req,res){
-//     var gameId = req.params.id;
-//     var user = req.getUser();
-
-//     console.log('clicked suggested')
-
-//     db.listgame.find({
-//         where:{
-//             gameId:gameId,
-//             userId:user.id
-//         }.then(function(game){
-//             if(game){
-//                 game.tryIt=false,
-//                 game.love=false,
-//                 game.own=false,
-//                 game.suggested=true
-//                 game.save().then(function(){
-//                     res.render('lists');
-//                 })
-//             }else{
-//                 request("http://boardgamegeek.com/xmlapi/boardgame/"+gameId,function(error,response,data){
-//                     if (!error && response.statusCode == 200){
-//                         db.listgame.create({
-//                             userId:user.id,
-//                             gameId:gameId,
-//                             name:data.boardgames.boardgame[0].name[0],
-//                             thumbUrl:data.boardgames.boardgame[0].thumbnail[0],
-//                             tryIt:false,
-//                             love:false,
-//                             own:false,
-//                             suggested:true
-//                         }).then(function(){
-//                             res.redirect('lists')
-//                         })
-//                     }
-//                 })
-//             }
-//         })
-//     })
-// })
 
 module.exports = router;
